@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Home from './pages/Home';
+import VideoRegister from './pages/register/Video';
+import CategoryRegister from './pages/register/Category';
 
-
-ReactDOM.render( <
-  React.StrictMode >
-  <
-  App / >
-  <
-  /React.StrictMode>,
+ReactDOM.render(
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" component={Home} exact />
+      <Route path="/register/video" component={VideoRegister} />
+      <Route path="/register/category" component={CategoryRegister} />
+      <Route component={() => <div> Error 404! </div>} />
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
