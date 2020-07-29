@@ -5,16 +5,16 @@ import {
   Title,
   ExtraLink,
 } from './styles';
+import Slider, { SliderItem } from './components/Slider';
 import VideoCard from './components/VideoCard';
 
-const VideoCardGroup = ({ ignoreFirstVideo, category }) => {
+const Carousel = ({ ignoreFirstVideo, category }) => {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
   const categoryExtraLink = category.link_extra;
   const videos = category.videos;
   return (
     <VideoCardGroupContainer>
-      {' '}
       {categoryTitle && (
         <>
           <Title
@@ -22,37 +22,34 @@ const VideoCardGroup = ({ ignoreFirstVideo, category }) => {
               backgroundColor: categoryColor || 'red',
             }}
           >
-            {' '}
-            {categoryTitle}{' '}
-          </Title>{' '}
+            {categoryTitle}
+          </Title>
           {categoryExtraLink && (
             <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {' '}
-              {categoryExtraLink.text}{' '}
+              {categoryExtraLink.text}
             </ExtraLink>
-          )}{' '}
+          )}
         </>
-      )}{' '}
-      <VideoCardList>
-        {' '}
+      )}
+      <Slider>
         {videos.map((video, index) => {
           if (ignoreFirstVideo && index === 0) {
             return null;
           }
 
           return (
-            <li key={video.titulo}>
+            <SliderItem key={video.titulo}>
               <VideoCard
                 videoTitle={video.titulo}
                 videoURL={video.url}
                 categoryColor={categoryColor}
               />{' '}
-            </li>
+            </SliderItem>
           );
-        })}{' '}
-      </VideoCardList>{' '}
+        })}
+      </Slider>
     </VideoCardGroupContainer>
   );
 };
 
-export default VideoCardGroup;
+export default Carousel;
