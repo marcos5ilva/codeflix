@@ -5,7 +5,13 @@ import PageTemplate from '../../PageTemplate';
 const CategoryRegister = () => {
   return (
     <PageTemplate>
-      <h1>Video CategoryRegister</h1>
+      <h1>Video Category Register</h1>
+      <form>
+        <label>
+          Category Name: <input type="text" />
+        </label>
+        <button>Add</button>
+      </form>
       <Link to="/">Home</Link>
     </PageTemplate>
   );
